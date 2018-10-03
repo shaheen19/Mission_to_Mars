@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mission to Mars</title>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../static/assets.css">
+
+</head>
+<body>
+    <header>
+        <div class="text-center">
+            <h1><a href="/" class="mission">Mission to Mars</a></h1>
+            <h5><a href="/" class="mission">A simple application designed to provide up todate information about the red planet- Mars</a></h5>
+            <a href="/scrape" class="btn btn-primary" role="button">Scrape</a>
+        </div>
+    </header>
+
+    <!-- Latest Mars News -->
+    <div class="container" style="width:100%">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Latest Mars News</h2>
+                <h3>{{ mars_info.news_title }}</h3>
+                <p>{{ mars_info.news_p }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Mars Image / Current Weather on Mars / Mars Facts -->
+    <div class="row">
+        <div class="col-md-8">
+            <div class="panel">
+                <div class="panel-body">
+                    <h2>Featured Mars Image</h2>
+                    <img src=  {{ mars_info.featured_image_url }} alt="" class="featured">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel border">
+                <div class="panel-body">
+                    <h2>Latest Weather on Mars</h2>
+                    <h6>Obtained with the REMS onboard the Curiosity Rover</h6>
+                    <p>{{ mars_info.mars_weather }}</p>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-body">
+                    <h2>Mars Facts Sheet</h2>
+                    {{ mars_info.profile_html|safe }}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+
+    <!-- Mars Hemispheres -->
+    <h2 class="hemispheres">Mars Hemispheres</h2>
+    <div class="row" style="padding-bottom:20px">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-5 border">
+            <img src={{ mars_info.hemisphere_image_urls[0]["img_url"] }} alt="" style="width:100%">
+            <p class="caption">{{ mars_info.hemisphere_image_urls[0]["title"] }}</p>
+        </div>
+        <div class="col-sm-5 border" >
+            <img src={{ mars_info.hemisphere_image_urls[1]["img_url"] }} alt="" style="width:100%">
+            <p class="caption">{{ mars_info.hemisphere_image_urls[1]["title"] }}</p>
+        </div>
+        <div class="col-sm-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-5 border" >
+            <img src={{ mars_info.hemisphere_image_urls[2]["img_url"] }} alt="" style="width:100%">
+            <p class="caption">{{ mars_info.hemisphere_image_urls[2]["title"] }}</p>
+        </div>
+        <div class="col-sm-5 border" >
+            <img src={{ mars_info.hemisphere_image_urls[3]["img_url"] }} alt="" style="width:100%">
+            <p class="caption">{{ mars_info.hemisphere_image_urls[3]["title"] }}</p>
+        </div>
+        <div class="col-sm-1"></div>
+    </div>
+
+</body>
+</html>
